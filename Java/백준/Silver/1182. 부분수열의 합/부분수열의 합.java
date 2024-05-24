@@ -8,23 +8,18 @@ public class Main {
     static Integer[] arr;
     static boolean[] isUsed;
 
-    static void func(int k) {
+    static void func(int k, int sum) {
         if(k == n) {
-            int sum = 0;
-            for(int i=0; i<n; ++i) {
-                if(arr[i] == null) continue;
-                sum += arr[i];
-            }
             if(sum == s) 
                 ans++;
             return;
         }
         // 현재 원소를 선택하지 않는 경우
         arr[k] = null;
-        func(k + 1);
+        func(k+1, sum);
         // 현재 원소를 선택하는 경우
         arr[k] = list.get(k);
-        func(k + 1);
+        func(k+1, sum+arr[k]);
     }
 
     public static void main(String[] args) throws IOException {
@@ -37,7 +32,7 @@ public class Main {
         st = new StringTokenizer(br.readLine());
         for(int i = 0; i < n; ++i) 
             list.add(Integer.parseInt(st.nextToken()));
-        func(0);
+        func(0, 0);
         if(s == 0) ans--;
         System.out.println(ans);
     }
