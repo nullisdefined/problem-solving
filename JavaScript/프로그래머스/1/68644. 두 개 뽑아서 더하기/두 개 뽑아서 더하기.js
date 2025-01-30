@@ -1,8 +1,8 @@
 function solution(numbers) {
     let arr = [];
     numbers.sort((a, b) => a - b);
-    for(let i=0; i<numbers.length; ++i) {
-        for(let j=i+1; j<numbers.length; ++j) {
+    for(let i = 0; i < numbers.length; ++i) {
+        for(let j = 0; j < i; ++j) {
             arr.push(numbers[i] + numbers[j]);
         }
     }
